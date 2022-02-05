@@ -1,0 +1,18 @@
+################################################################################
+# SVGedit Stack or Compose
+################################################################################
+# #start container
+# docker stack deploy node-red --compose-file docker-compose-node-red.yml
+# docker-compose -f docker-compose-node-red.yml -p myNoderedProject up
+################################################################################
+version: "3.7"
+
+services:
+  svgedit:
+    build:
+      context: ./container
+      dockerfile: Dockerfile
+    ports:
+      - "${HOST_PORT}:8000"
+    restart: unless-stopped
+
